@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap stylesheets and script -->
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
-    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 
-    <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
 </head>
-
 <body>
+<header class="meetup-page-header" th:fragment="meetup-page-header">
+    <nav>
 
-<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a th:href="@{/}" class="navbar-brand">TechJobs</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a th:href="@{/list}">List</a></li>
-                <li><a th:href="@{/search}">Search</a></li>
-                <li><a th:href="@{/add}">Add Jobs</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+    </nav>
+    <h1 th:text="${title}">TrailTracker</h1>
+    <ul class="nav" style="float:right;">
+        <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+    </ul>
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="/meetups">All Meetups</a></li>
+        <li class="nav-item"><a class="nav-link" href="/meetups/create">Create a Meetup</a></li>
+        <li class="nav-item"><a class="nav-link" href="/meetups/delete">Delete a Meetup</a></li>
+        <li class="nav-item"><a class="nav-link" href="/meetupCategories">Meetup Categories</a></li>
+    </ul>
+</header>
 
 </body>
 </html>

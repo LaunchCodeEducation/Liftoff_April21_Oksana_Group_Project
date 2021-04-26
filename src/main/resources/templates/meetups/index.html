@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <title>TrailTracker | Meetups</title>
+</head>
+<body class="container">
+
+<header th:replace="fragments :: meetup-page-header"></header>
+
+<table class="table table-stripped">
+    <thead>
+    <tr>
+        <th>Meetup Name</th>
+    </tr>
+    </thead>
+    <tr th:each="meetup : ${meetups}">
+        <td><a th:href="'/meetups/details?meetupId=' + ${meetup.id}" th:text="${meetup.meetupName}"></a></td>
+    </tr>
+</table>
+</body>
+</html>
