@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
@@ -95,7 +96,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
                                    Errors errors, HttpServletRequest request,
-                                   Model model) {
+                                   Model model, Boolean rememberMe, HttpServletResponse response ) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
@@ -118,9 +119,17 @@ public class AuthenticationController {
             return "login";
         }
 
+//        if(rememberMe){
+//            HttpServletResponse response = ...;
+//            Cookie c = new Cookie(COOKIE_NAME, encodeString(uuid));
+//            c.setMaxAge(365 * 24 * 60 * 60); // one year
+//            servletResponse.addCookie(c);
+//        }
+
         setUserInSession(request.getSession(), theUser);
 
         return "redirect:";
+
     }
 
     @GetMapping("/logout")

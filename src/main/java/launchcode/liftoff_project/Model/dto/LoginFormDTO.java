@@ -1,6 +1,7 @@
 package launchcode.liftoff_project.Model.dto;
 
 import com.sun.istack.NotNull;
+import org.springframework.boot.web.servlet.server.Session;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -20,6 +21,16 @@ public class LoginFormDTO {
     @NotBlank
     @Size(min = 5, max = 30, message = "Invalid password. Must be between 5 and 30 characters.")
     private String password;
+
+    public Session.Cookie getRememberMeToken() {
+        return rememberMeToken;
+    }
+
+    public void setRememberMeToken(Session.Cookie rememberMeToken) {
+        this.rememberMeToken = rememberMeToken;
+    }
+
+    private Session.Cookie rememberMeToken;
 
     public String getFirstName() {
         return firstName;
