@@ -143,6 +143,15 @@ table {
     color: Black;
     width:100%
 }
+
+.nav-link-create {
+    background-color: white;
+    color: Black;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:10px;
+}
+
 .nav {
     background: white;
 }
@@ -150,6 +159,7 @@ table {
 h1 {
   font-size: 5rem;
   color: white;
+  
 }
 
 .meetup-page-header {

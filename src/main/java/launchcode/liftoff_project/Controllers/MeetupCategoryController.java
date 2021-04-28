@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -44,6 +41,23 @@ public class MeetupCategoryController {
         }
 
         meetupCategoryRepository.save(meetupCategory);
+        return "redirect:";
+    }
+
+    @GetMapping("delete")
+    public String displayDeleteMeetupsCategoryForm(Model model) {
+        model.addAttribute("title", "Delete A Meetup Category");
+        model.addAttribute("categories", meetupCategoryRepository.findAll());
+        return "meetupCategories/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteMeetupsCategoryForm(@RequestParam(required = false) int[] meetupCategoryIds) {
+        if(meetupCategoryIds != null) {
+            for (int id: meetupCategoryIds) {
+                meetupCategoryRepository.deleteById(id);
+            }
+        }
         return "redirect:";
     }
 }
