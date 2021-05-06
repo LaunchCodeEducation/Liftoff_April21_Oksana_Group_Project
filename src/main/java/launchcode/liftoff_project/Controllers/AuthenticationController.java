@@ -12,9 +12,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
@@ -96,7 +96,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
                                    Errors errors, HttpServletRequest request,
-                                   Model model, Boolean rememberMe, HttpServletResponse response ) {
+                                   Model model, RedirectAttributes redirectAttributes) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
@@ -118,23 +118,16 @@ public class AuthenticationController {
             model.addAttribute("title", "Log In");
             return "login";
         }
-
-//        if(rememberMe){
-//            HttpServletResponse response = ...;
-//            Cookie c = new Cookie(COOKIE_NAME, encodeString(uuid));
-//            c.setMaxAge(365 * 24 * 60 * 60); // one year
-//            servletResponse.addCookie(c);
-//        }
-
+        //This adds our theUser to our html to be able to use tell if logged in
         setUserInSession(request.getSession(), theUser);
-
+        redirectAttributes.addAttribute("theUser", theUser.getEmail());
         return "redirect:";
-
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request, Model model){
         request.getSession().invalidate();
+        model.addAttribute("logout", "Log out");
         return "redirect:/login";
     }
 
