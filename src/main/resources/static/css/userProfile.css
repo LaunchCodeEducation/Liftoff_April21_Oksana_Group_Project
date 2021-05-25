@@ -1,0 +1,16 @@
+.container{
+     display:grid;
+     grid-template-columns: 50% 50%;
+     padding: 2rem;
+}
+.header{
+  text-align: center;
+  padding: 2rem;
+}
+.left-col{
+    padding: 1rem;
+
+}
+.right-col{
+    padding: 1rem;
+}
