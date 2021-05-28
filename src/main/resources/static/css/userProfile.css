@@ -1,16 +1,15 @@
 .container{
-     display:grid;
-     grid-template-columns: 50% 50%;
-     padding: 2rem;
+    border: 3px solid black;
+    padding: 1.5rem
+}
+.row{
+    padding: 1.5rem;
+}
+.col{
+    border: 3px solid black;
+    padding: 1.5rem;
+    padding: 1.5rem;
 }
 .header{
-  text-align: center;
-  padding: 2rem;
-}
-.left-col{
-    padding: 1rem;
-
-}
-.right-col{
-    padding: 1rem;
+    text-align: center;
 }

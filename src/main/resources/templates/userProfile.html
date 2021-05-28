@@ -11,32 +11,28 @@
 <header th:replace="fragments :: header"></header>
 <h1 class="header">User Profile</h1>
     <div class="container">
-        <div class="left-col">
-            <img alt="user annonymous profilepic profile pfp Sticker by sky" class="n3VNCb" src="https://cdn140.picsart.com/338003880059211.png?type=webp&amp;to=min&amp;r=640" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd;" style="width: 100px; height: 100px; margin: 0px;">
-            <p th:text="${theUser.firstName}" class="subhead"></p>
-            <p th:text="${theUser.lastName}" class="subhead"></p>
-            <p th:text="${theUser.email}" class="subhead"></p>
+        <div class="row">
+            <div class="col">
+                <img alt="user annonymous profilepic profile pfp Sticker by sky" class="n3VNCb" src="https://cdn140.picsart.com/338003880059211.png?type=webp&amp;to=min&amp;r=640" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd;" style="width: 100px; height: 100px; margin: 0px;">
+                <p th:text="${theUser.firstName}" class="subhead"></p>
+                <p th:text="${theUser.lastName}" class="subhead"></p>
+                <p th:text="${theUser.email}" class="subhead"></p>
+             </div>
         </div>
     </div>
     <div class="container">
-        <div class="right-col">
-            <h2>Upcoming Meetups</h2>
-            <p>upcoming meetup</p>
-            <p>upcoming meetup</p>
-            <p>upcoming meetup</p>
-        </div>
-        <div class="right-col">
-            <h2>Trails Visited</h2>
-            <p>trail 1</p>
-            <p>trail 2</p>
-            <p>trail 3</p>
-        </div>
-        <div class="right-col">
-            <h2>Past Meetups</h2>
-            <p>past meetups</p>
-            <p>past meetups</p>
-            <p>past meetups</p>
-            <p>past meetups</p>
+        <div class="row">
+            <div class="col">
+                 <h2>Meetups</h2>
+                 <p>meetup</p>
+                 <p>meetup</p>
+                 <p>meetup</p>
+            </div>
+            <div class="col">
+                <h2>Favorite Trails</h2>
+                <p>trail 2</p>
+                <p>trail 3</p>
+            </div>
         </div>
     </div>
 </body>
