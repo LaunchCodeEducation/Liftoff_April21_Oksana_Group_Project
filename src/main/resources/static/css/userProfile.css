@@ -42,7 +42,7 @@
   color:white;
 }
 .row{
-    padding: 1.5rem;
+    padding: 3rem;
 }
 .col{
     border: 3px solid black;
@@ -57,6 +57,13 @@ h1{
     padding: 1.5rem;
     text-align: center;
 }
-img{
-
+.user-info {
+    background: #E1E6E1;
+    display:grid;
+    padding:.9em 1em;
+    border-radius: 0 0 1em 1em;
+}
+.favorite-trails{
+    color: #4a684d;
+    font-size: 15px;
 }

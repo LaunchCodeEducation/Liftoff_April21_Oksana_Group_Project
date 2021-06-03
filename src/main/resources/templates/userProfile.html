@@ -9,7 +9,6 @@
 <head th:replace="fragments :: head">
 <body>
 <header th:replace="fragments :: header"></header>
-<<<<<<< HEAD
 <h1 class="main_header" style="text-align: center">User Profile</h1>
     <div class="container">
         <div class="row">
@@ -23,16 +22,17 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
-                 <h2 class="header">Meetups</h2>
-                 <p th:text="${meetups}">meetup</p>
-            </div>
-            <div class="col">
+<!--            <div class="user-info">-->
+<!--                 <h2 class="header">Meetups</h2>-->
+<!--                 <p th:text="${meetups}">meetup</p>-->
+<!--            </div>-->
+            <div class="user-info">
                 <h2 class="header">Favorite Trails</h2>
-                <p th:each="trail : ${theUser.favoriteTrails}" th:text="${trail.name}"></p>
+                <p th:each="trail : ${theUser.favoriteTrails}" th:text="${trail.name}" class="favorite-trails"></p>
             </div>
         </div>
     </div>
+<footer th:replace="fragments :: footer"></footer>
 </body>
 </html>
 
