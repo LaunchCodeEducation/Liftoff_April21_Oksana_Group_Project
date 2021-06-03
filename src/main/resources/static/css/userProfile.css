@@ -1,0 +1,70 @@
+.container > div {
+    background: rgb(171, 196, 173);
+    padding: 1em;
+    border-radius: 1.5em;
+}
+.container {
+    display: grid;
+    text-align: center;
+    padding: 2em;
+    background: #E1E6E1;
+    grid-template-columns: 1fr;
+    grid-gap: 2em;
+    grid-auto-rows: minmax(300px, auto);
+}
+.main_container {
+    display: grid;
+    text-align: right;
+    padding: 2em;
+    background: #E1E6E1;
+    grid-template-columns: 1fr;
+    grid-gap: 2em;
+    grid-auto-rows: minmax(300px, auto);
+}
+.header{
+    display: grid;
+    padding: .9em 1em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    background: #6a956d;
+    border-radius: 1em 1em 0 0;
+    color:white;
+}
+.main_header{
+  display: grid;
+  padding: .9em 2em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  background: #6a956d;
+  border-radius: 1em 1em 0 0;
+  color:white;
+}
+.row{
+    padding: 3rem;
+}
+.col{
+    border: 3px solid black;
+    padding: 1.5rem;
+    padding: 1.5rem;
+}
+.header{
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 45px;
+}
+h1{
+    padding: 1.5rem;
+    text-align: center;
+}
+.user-info {
+    background: #E1E6E1;
+    display:grid;
+    padding:.9em 1em;
+    border-radius: 0 0 1em 1em;
+}
+.favorite-trails{
+    color: #4a684d;
+    font-size: 35px;
+}

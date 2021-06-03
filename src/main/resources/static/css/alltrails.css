@@ -1,0 +1,175 @@
+#master-container {
+    padding: 2em;
+    background: #E1E6E1;
+}
+
+.section-container {
+    padding: 2em;
+    background-color: rgb(171, 196, 173);
+    border-radius: 1.5em;
+    margin: 1em;
+}
+
+#git aresults-list {
+    overflow-y: scroll;
+    height: 95%;
+    background-color: #091E05;
+    border-radius: 1.5em;
+}
+
+.trail-result-block {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 1.5em;
+}
+
+.trail-result-name {
+    cursor: pointer
+}
+
+.trail-result-name:hover {
+    text-decoration: underline;
+}
+
+.trail-result-name {
+    cursor: pointer
+}
+
+.trail-result-name:hover {
+    text-decoration: underline;
+}
+
+#map {
+    height: 95%;
+    border-radius: 1.5em;
+}
+
+.form-group{
+    background-color: rgba(255,255,255,0.3);
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.form-control{
+    display: inline-block
+}
+
+label {
+    white-space: nowrap;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1.5em
+}
+
+input[type="number"]{
+    width: 8rem !important;
+}
+
+#difficulty-inputs {
+    display:flex;
+    width: auto;
+}
+
+#min-rating {
+    justify-content: space-around;
+}
+
+.difficulty-label {
+    display: flex;
+    margin: 0 1rem;
+    flex-direction: column;
+}
+
+.icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    margin-bottom: 10px;
+}
+
+.result-icon-set {
+    display: flex;
+    margin: 0.5rem;
+    margin-left: 0;
+    flex-wrap: wrap;
+}
+
+.accordion-item {
+    background-color: inherit;
+    border-radius: 0 !important
+}
+
+.accordion-button {
+    color: inherit;
+    background-color: rgba(255,255,255,0.4)
+}
+
+.accordion-button:not(.collapsed) {
+    color: inherit;
+    background-color: rgba(0,0,0,0.2)
+}
+
+/* from https://bbbootstrap.com/snippets/star-rating-pure-css-19646372 */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    font-size: 2em;
+    color: #0dcaf0;
+    cursor: pointer;
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+/* Google Maps InfoWindow overrides*/
+.gm-style .gm-style-iw-c {
+    padding: 0;
+    background-color: #091E05 !important;
+    border: 10px solid black;
+    margin: 0;
+}
+
+.gm-style-iw-d {
+    padding: 0;
+    overflow: hidden !important;
+}
+
+.gm-ui-hover-effect {
+    background-color: rgb(171, 196, 173) !important;
+    margin: 10px 10px 0 0;
+}
+
+ol {
+    list-style-position: inside;
+    padding-left: 0
+}
+
+label {
+    font-weight: bold
+}

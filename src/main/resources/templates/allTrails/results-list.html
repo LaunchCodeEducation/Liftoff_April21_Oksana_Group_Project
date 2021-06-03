@@ -1,0 +1,92 @@
+<div th:fragment="results-list" id="results-column" class="col-sm-4 section-container" style="height: 100vh" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2 th:text="'Results (' + ${trails.size()} + ')'"></h2>
+    <ol id="results-list" class="mb-0 text-white py-3">
+        <th:block th:each="trail : ${trails}">
+            <li th:class="'trail-result-block p-4 m-4 ' + ${theUser != null AND theUser.getFavoriteTrails().contains(trail) ? 'border border-5 border-warning' : ''}" >
+                <h4
+                        class="trail-result-name"
+                        th:text="${trail.getAverageRating() != null} ? ${trail.name} + ' (☆ ' + ${trail.getAverageRating()} + ')' : ${trail.name}"
+                        th:attr="onclick='focusTrail(' + ${trail.id} + ')'">
+                </h4>
+                <ul class="trail-result-details pl-0">
+                    <li th:text="${trail.length} + ' mi long, Level ' + ${trail.difficulty}"></li>
+                    <li th:text="${trail.city} +', ' + ${trail.state}"></li>
+                    <li th:id="'distance-from-' + ${trail.id}"></li>
+                    <li class="result-icon-set">
+                        <img class="fas fa icon" th:if="${trail.getType().toString().equals('partial_paved')}" style="vertical-align: baseline; height: 2rem" th:src="@{/svg/mixed_white.svg}"
+                             data-toggle="tooltip" data-bs-placement="bottom" title="Partially paved" animation="true"/>
+                        <img class="fas fa icon" th:if="${trail.getType().toString().equals('gravel')}" style="vertical-align: baseline; height: 2rem" th:src="@{/svg/gravel_white.svg}"
+                             data-toggle="tooltip" data-bs-placement="bottom" title="Gravel surface" animation="true"/>
+                        <img class="fas fa icon" th:if="${trail.getType().toString().equals('natural')}" style="vertical-align: baseline; height: 2rem" th:src="@{/svg/natural_white.svg}"
+                             data-toggle="tooltip" data-bs-placement="bottom" title="Natural surface" animation="true"/>
+                        <img class="fas fa icon" th:if="${trail.getType().toString().equals('paved')}" style="vertical-align: baseline; height: 2rem" th:src="@{/svg/paved_white.svg}"
+                             data-toggle="tooltip" data-bs-placement="bottom" title="Paved surface" animation="true"/>
+                        <img class="fas fa icon" th:if="${trail.getWater().toString().equals('creek')}" style="vertical-align: baseline; height: 2rem" th:src="@{/svg/creek_white.svg}"
+                             data-toggle="tooltip" data-bs-placement="bottom" title="Near creek" animation="true"/>
+                        <img class="fas fa icon" th:if="${trail.getWater().toString().equals('lake')}" style="vertical-align: baseline; height: 2rem" th:src="@{/svg/lake_white.svg}"
+                             data-toggle="tooltip" data-bs-placement="bottom" title="Near lake" animation="true"/>
+                        <img class="fas fa icon" th:if="${trail.getWater().toString().equals('river')}" style="vertical-align: baseline; height: 2rem" th:src="@{/svg/river_white.svg}"
+                             data-toggle="tooltip" data-bs-placement="bottom" title="Near river" animation="true"/>
+                        <i th:if="${trail.dogs}" class="fas fa-dog icon"
+                           data-toggle="tooltip" data-bs-placement="bottom" title="Confirmed dog-friendly" animation="true">
+                        </i>
+                        <i th:if="${trail.woods}" class="fas fa-tree icon"
+                           data-toggle="tooltip" data-bs-placement="bottom" title="Wooded area" animation="true">
+                        </i>
+                        <i th:if="${trail.bikes}" class="fas fa-biking icon"
+                           data-toggle="tooltip" data-bs-placement="bottom" title="Confirmed bike-friendly" animation="true">
+                        </i>
+                        <i th:if="${trail.family}" class="fas fa-baby-carriage icon"
+                           data-toggle="tooltip" data-bs-placement="bottom" title="Confirmed family-friendly" animation="true">
+                        </i>
+                    </li>
+                </ul>
+                <form th:if="${theUser != null}" hidden th:id="'add-favorites' + ${trail.id}" th:action="@{/alltrails/modify-favorites}" method="POST">
+                    <input name="trailId" th:value="${trail.getId()}" />
+                    <input name="userId" th:value="${theUser.id}" />
+                    <input name="type" th:value="add" />
+                    <input name="sort" th:value="averageRating" />
+                </form>
+                <form th:if="${theUser != null}" hidden th:id="'remove-favorites' + ${trail.id}" th:action="@{/alltrails/modify-favorites}" method="POST">
+                    <input name="trailId" th:value="${trail.getId()}" />
+                    <input name="userId" th:value="${theUser.id}" />
+                    <input name="type" th:value="remove" />
+                    <input name="sort" th:value="averageRating" />
+                </form>
+                <div id="result-options" class="row" style="display: flex">
+                    <button
+                            onclick=""
+                            type="submit"
+                            th:form="'add-favorites' + ${trail.id}"
+                            th:if="${theUser != null AND !theUser.getFavoriteTrails().contains(trail)}"
+                            class="btn btn-warning col-sm m-1" style="width: 100%; margin: 1rem">Favorite
+                    </button>
+                    <button
+                            type="submit"
+                            th:form="'remove-favorites' + ${trail.id}"
+                            th:if="${theUser != null AND theUser.getFavoriteTrails().contains(trail)}"
+                            class="btn btn-danger col-sm m-1" style="width: 100%; margin: 1rem">Unfavorite
+                    </button>
+                    <a th:if="${theUser != null}" href="/meetups/create" class="btn btn-primary col-sm m-1">+ Meetup</a>
+                    <form th:if="${theUser != null}" method="POST" th:action="@{/alltrails/rate}" id="rating-form" style="display: flex; justify-content: space-evenly; line-height: 2rem" class="row-cols-sm form-inline my-2">
+                        <div id="rating" class="rating">
+                            <th:block th:each="i: ${#numbers.sequence(5,1)}">
+                                <input type="radio" name="ratingValue" th:value="${i}" th:id="${trail.name} + ${i}" th:checked="${i == trail.getRatingByUser(theUser.id)}"/>
+                                <label th:for="${trail.name} + ${i}">☆</label>
+                            </th:block>
+                            <input type="hidden" name="sort" value="averageRating"/>
+                            <input type="hidden" name="trailId" th:value="${trail.id}" />
+                            <input type="hidden" name="userId" th:value="${theUser.id}" />
+                        </div>
+                        <button type="submit" style="height: 2rem" class="btn btn-info">Rate</button>
+                    </form>
+                </div>
+
+                <div class="row">
+                    <a th:href="@{/trail/{id}(id = ${trail.id})}" class="btn btn-primary col-sm m-1">More Info</a>
+                </div>
+                <p th:if="${theUser == null}" class="text-center m-2">Sign in to Favorite or plan a meetup</p>
+            </li>
+        </th:block>
+    </ol>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<head>
+    <link th:href="@{/css/meetups.css}" rel="stylesheet" />
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<div class="navbar">
+    <div class="container">
+        <nav>
+            <ul class="meetup-nav">
+                <li><a th:if="${theUser != null}" href="/meetups" class="all-cta">All Meetups</a>
+                    <a th:if="${theUser != null}" href="/meetups/create" class="primary-cta">Create a Meetup</a>
+                    <a th:if="${theUser != null}" href="/meetups/delete" class="secondary-cta">Delete a Meetup</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<form method="post">
+
+    <th:block th:each="meetup : ${meetups}">
+        <div class="form-group">
+            <label>
+                <span th:text="${meetup.meetupName}"></span>
+                <input type="checkbox" name="meetupIds" th:value="${meetup.id}" class="form-control">
+            </label>
+        </div>
+    </th:block>
+    <input type="submit" value="Delete" class="btn btn-danger">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: head"></head>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<div class="header">
+    <img class="head_image" th:src="@{/images/pexels-photo-371589.jpeg}" width="100%" height="400px">
+    <div class="centered">Welcome to Trail Tracker</div>
+</div>
+<h1 class="first_head text-center">Featured Trails</h1>
+<div class="row">
+    <div class="col-md-3">
+        <div class="img-thumbnail">
+            <a target="_blank" th:href="@{/images/germany-1751443.jpg}">
+                <img th:src="@{/images/germany-1751443.jpg}" width="100%">
+            </a>
+            <div class="caption">
+                <h4 class="trail_name"><a th:href="@{/trail/1}" style="text-decoration: none;">Lost Valley Trail - Long Loop</a></h4>
+                <p class="desc">Short trail that's good for sunset photos!</p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <p>(254)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="img-thumbnail">
+            <a target="_blank" th:href="@{/images/mountains-5485366.jpg}">
+                <img th:src="@{/images/mountains-5485366.jpg}" width="100%">
+            </a>
+            <div class="caption">
+                <h4 class="trail_name"><a th:href="@{/trail/2}" style="text-decoration: none" >Boschert Greenway Trail</a></h4>
+                <p class="desc">Medium length trail that takes you to new heights!</p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <p>(305)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="img-thumbnail">
+            <a target="_blank" th:href="@{/images/yellowstone-4319675.jpg}">
+                <img th:src="@{/images/yellowstone-4319675.jpg}" width="100%">
+            </a>
+            <div class="caption">
+                <h4 class="trail_name"><a th:href="@{/trail/3}" style="text-decoration: none;">Mississippi River Greenway: North Riverfront Trail</a></h4>
+                <p class="desc">Long trail that provides a new world experience!</p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <p>(1254)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="img-thumbnail">
+            <a target="_blank" th:href="@{/images/forest-path-4697056.jpg}">
+                <img th:src="@{/images/forest-path-4697056.jpg}" width="100%">
+            </a>
+            <div class="caption">
+                <h4 class="trail_name"><a th:href="@{/trail/4}" style="text-decoration: none;">Hawk Ridge Trail</a></h4>
+                <p class="desc">Short easy trail that gives you that mid-age feeling!</p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <p>(277)</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

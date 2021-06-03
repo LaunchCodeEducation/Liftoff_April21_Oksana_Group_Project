@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<head>
+    <link th:href="@{/css/meetups.css}" rel="stylesheet" />
+</head>
+
+<body class="create-meetup-body">
+    <header th:replace="fragments :: header"></header>
+    <div class="navbar">
+        <div class="container">
+            <nav>
+                <ul class="meetup-nav">
+                    <li><a href="/meetups" class="all-cta">All Meetups</a>
+                        <a href="/meetups/create" class="primary-cta">Create a Meetup</a>
+                        <a href="/meetups/delete" class="secondary-cta">Delete a Meetup</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <section class="create-meetup-section">
+        <form method="post">
+            <div class="form-group">
+                <div class="form-wrapper">
+                    <label class="form-name">Meetup Name:
+                            <input th:field="${meetup.meetupName}" class="form-control">
+                    </label>
+                        <p class="error" th:errors="${meetup.meetupName}"></p>
+                    <label class="form-email">Contact Email:
+                        <input th:field="${meetup.meetupContactEmail}" class="form-control">
+                    </label>
+                        <p class="error" th:errors="${meetup.meetupContactEmail}"></p>
+                    <label class="form-date">Date (mm/dd/yyy):
+                        <input th:field="${meetup.meetupDate}" class="form-control">
+                    </label>
+                        <p class="error" th:errors="${meetup.meetupDate}"></p>
+                    <label class="form-description">Description:
+                            <textarea th:field="${meetup.meetupDescription}" class="form-control"></textarea>
+                        </label>
+                        <p class="error" th:errors="${meetup.meetupDescription}"></p>
+                    <label class="form-category" th:for="category">Category:</label>
+                    <select id="meetupCategory" name="meetupCategory">
+                        <option value="Nature Walk">Nature Walk</option>
+                        <option value="Cycling">Cycling</option>
+                        <option value="Family Activity">Family Activity</option>
+                        <option value="Athletic">Athletic</option>
+                    </select>
+                    <label class="form-trail" th:for="trail">Trail:</label>
+                        <select name="trailId">
+                            <option th:each="trail : ${trails}"
+                                    th:text="${trail.name}"
+                                    th:value="${trail.id}"></option>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" value="Create Meetup">
+            </div>
+        </form>
+    </section>
+</body>
+</html>
