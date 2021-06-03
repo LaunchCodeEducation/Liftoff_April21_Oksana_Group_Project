@@ -37,6 +37,15 @@ public class User extends AbstractEntity {
         inverseJoinColumns = @JoinColumn(name = "trail_id"))
     private Set<Trail> favoriteTrails;
 
+    @ManyToMany
+    @JoinTable(
+            name = "meetups",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "meetup_details_id"))
+    private Set<Meetup> theMeetups;
+
+
+
     public User() {}
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -98,7 +107,24 @@ public class User extends AbstractEntity {
         System.out.println(favoriteTrails);
     }
 
-    //    public String getConfirmationToken() {
+    public Set<Meetup> getMeetups() {
+        return theMeetups;
+    }
+
+    public void setMeetups(Set<Meetup> meetups) {
+        this.theMeetups = meetups;
+    }
+
+    public void addMeetup(Meetup meetup) {
+        this.theMeetups.add(meetup);
+        System.out.println(theMeetups);
+    }
+
+    public void removeMeetup(Meetup meetup){
+        this.theMeetups.remove(meetup);
+        System.out.println(theMeetups);
+    }
+//    public String getConfirmationToken() {
 //        return confirmationToken;
 //    }
 

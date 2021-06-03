@@ -126,6 +126,7 @@ public class AuthenticationController extends HttpServlet {
 //        session.setAttribute("email", user.getEmail());
 //        session.setAttribute("firstName", user.getFirstName());
 //        session.setAttribute("lastName", user.getLastName());
+            session.setAttribute("meetup", user.getMeetups());
 
 //        redirectAttributes.addAttribute("theUser", user.getEmail());
         return "redirect:/userProfile";
