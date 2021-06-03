@@ -164,6 +164,11 @@ td {
     background-color: rgb(72, 77, 75);
 }
 /* End Of Search Table */
+
+h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 form.example input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -370,6 +375,7 @@ ul{
     width: 100%;
 }
 }
+
 h1 {
     margin: 0;
     padding: .5rem;
@@ -378,8 +384,8 @@ h1 {
     color: white;
     font-size: 5em;
 }
+
 .img-thumbnail {
     height: 93%;
     margin: 1em;
 }
-

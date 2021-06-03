@@ -12,12 +12,12 @@
 <div id="master-container">
     <div id="filter-row" class="row section-container" style="width: auto">
         <div th:fragment="filter-form" id="filter-column" class="col-sm-12 accordion-item text-center" style="border: none" th:insert="allTrails/filter-form.html :: filter-form">
-        <!--Trail Filter-->
+            <!--Trail Filter-->
         </div>
     </div>
     <div id="results-map-row" class="row mx-0" style="width: auto">
         <div id="filter-column" class="col px-md-5 section-container container accordion-item" th:replace="allTrails/results-list.html :: results-list">
-        <!--Filter Results-->
+            <!--Filter Results-->
         </div>
         <div id="map-column" class="col px-md-7 section-container">
             <h2 style="display: flex; justify-content: space-between">
