@@ -2,7 +2,10 @@ package launchcode.liftoff_project.Model.dto;
 
 import com.sun.istack.NotNull;
 
+import javax.validation.constraints.NotBlank;
+
 public class RegisterFormDTO extends LoginFormDTO {
+
     @NotNull
     private String firstName;
 
