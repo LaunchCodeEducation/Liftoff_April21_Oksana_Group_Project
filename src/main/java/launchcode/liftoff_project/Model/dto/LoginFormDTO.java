@@ -3,7 +3,6 @@ package launchcode.liftoff_project.Model.dto;
 import com.sun.istack.NotNull;
 import org.springframework.boot.web.servlet.server.Session;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
